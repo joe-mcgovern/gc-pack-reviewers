@@ -1,12 +1,12 @@
-# Quality Pipeline — 6-phase code review pack.
+# Quality Pipeline — 7-phase code review pack.
 #
 # Maps the quality-pipeline slash command's review phases to Gas City
 # reviewer agents. Each phase is a pool of 2 reviewers that receive
 # work beads from the orchestrating agent (mayor or polecat).
 #
 # Phases run sequentially: correctness -> tests -> modularity ->
-# elegance -> security -> polish. Each phase produces findings ranked
-# critical > important > minor.
+# elegance -> observability -> security -> polish. Each phase produces
+# findings ranked critical > important > minor.
 #
 # Rig-scoped: one reviewer pool per rig that includes this pack.
 
@@ -58,7 +58,18 @@ idle_timeout = "30m"
 min = 0
 max = 2
 
-# -- Phase 5: Security -- Could this be exploited? ----------------------
+# -- Phase 5: Observability -- Can you tell if this is working? ---------
+[[agent]]
+name = "reviewer-observability"
+scope = "rig"
+prompt_template = "prompts/reviewer-observability.md"
+nudge = "Check your hook for review assignments."
+idle_timeout = "30m"
+[agent.pool]
+min = 0
+max = 2
+
+# -- Phase 6: Security -- Could this be exploited? ---------------------
 [[agent]]
 name = "reviewer-security"
 scope = "rig"
@@ -69,7 +80,7 @@ idle_timeout = "30m"
 min = 0
 max = 2
 
-# -- Phase 6: Polish -- Would this make a reviewer wince? ---------------
+# -- Phase 7: Polish -- Would this make a reviewer wince? --------------
 [[agent]]
 name = "reviewer-polish"
 scope = "rig"

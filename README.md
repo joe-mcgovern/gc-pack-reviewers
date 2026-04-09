@@ -1,6 +1,6 @@
 # Quality Pipeline Reviewers Pack
 
-Gas City pack providing 6-phase quality review agents. Each phase focuses on a single quality dimension with a pool of 2 reviewers.
+Gas City pack providing 7-phase quality review agents. Each phase focuses on a single quality dimension with a pool of 2 reviewers.
 
 ## Phases
 
@@ -10,8 +10,9 @@ Gas City pack providing 6-phase quality review agents. Each phase focuses on a s
 | 2 | reviewer-tests | Are the tests sufficient? |
 | 3 | reviewer-modularity | Can a human read, understand, and modify this? |
 | 4 | reviewer-elegance | Is this the simplest correct solution? |
-| 5 | reviewer-security | Could this be exploited or cause data exposure? |
-| 6 | reviewer-polish | Would this make a human reviewer wince? |
+| 5 | reviewer-observability | Can you tell if this is working in production? |
+| 6 | reviewer-security | Could this be exploited or cause data exposure? |
+| 7 | reviewer-polish | Would this make a human reviewer wince? |
 
 ## Usage
 
