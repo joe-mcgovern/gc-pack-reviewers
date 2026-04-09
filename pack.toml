@@ -1,0 +1,81 @@
+# Quality Pipeline — 6-phase code review pack.
+#
+# Maps the quality-pipeline slash command's review phases to Gas City
+# reviewer agents. Each phase is a pool of 2 reviewers that receive
+# work beads from the orchestrating agent (mayor or polecat).
+#
+# Phases run sequentially: correctness -> tests -> modularity ->
+# elegance -> security -> polish. Each phase produces findings ranked
+# critical > important > minor.
+#
+# Rig-scoped: one reviewer pool per rig that includes this pack.
+
+[pack]
+name = "quality-pipeline"
+schema = 1
+
+# -- Phase 1: Correctness -- Does the code do what it claims? -----------
+[[agent]]
+name = "reviewer-correctness"
+scope = "rig"
+prompt_template = "prompts/reviewer-correctness.md"
+nudge = "Check your hook for review assignments."
+idle_timeout = "30m"
+[agent.pool]
+min = 0
+max = 2
+
+# -- Phase 2: Tests -- Are the tests sufficient? ------------------------
+[[agent]]
+name = "reviewer-tests"
+scope = "rig"
+prompt_template = "prompts/reviewer-tests.md"
+nudge = "Check your hook for review assignments."
+idle_timeout = "30m"
+[agent.pool]
+min = 0
+max = 2
+
+# -- Phase 3: Modularity -- Can a human read and modify this? -----------
+[[agent]]
+name = "reviewer-modularity"
+scope = "rig"
+prompt_template = "prompts/reviewer-modularity.md"
+nudge = "Check your hook for review assignments."
+idle_timeout = "30m"
+[agent.pool]
+min = 0
+max = 2
+
+# -- Phase 4: Elegance -- Is this the simplest correct solution? --------
+[[agent]]
+name = "reviewer-elegance"
+scope = "rig"
+prompt_template = "prompts/reviewer-elegance.md"
+nudge = "Check your hook for review assignments."
+idle_timeout = "30m"
+[agent.pool]
+min = 0
+max = 2
+
+# -- Phase 5: Security -- Could this be exploited? ----------------------
+[[agent]]
+name = "reviewer-security"
+scope = "rig"
+prompt_template = "prompts/reviewer-security.md"
+nudge = "Check your hook for review assignments."
+idle_timeout = "30m"
+[agent.pool]
+min = 0
+max = 2
+
+# -- Phase 6: Polish -- Would this make a reviewer wince? ---------------
+[[agent]]
+name = "reviewer-polish"
+scope = "rig"
+prompt_template = "prompts/reviewer-polish.md"
+nudge = "Check your hook for review assignments."
+idle_timeout = "30m"
+[agent.pool]
+min = 0
+max = 2
